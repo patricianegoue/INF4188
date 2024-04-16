@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SparqlService } from './service/sparql.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,20 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Projet_Alimentation';
+
+  constructor(
+    private sparql: SparqlService
+  ) { }
+
+  handleRequest1() {
+    this.sparql.requete1().subscribe(res => {
+      console.log(res);
+
+    })
+
+  }
+
+  ngOnInit(){
+    this.handleRequest1();
+  }
 }
